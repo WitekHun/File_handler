@@ -21,7 +21,9 @@ def files_list(dir):
                 fh.write(f"{str(all_list)} \n")
     #print(f"ITERDIR: {directory.iterdir()}!!!!")
     for i in os.listdir(directory): 
-        if os.path.isdir(i) and str(i).endswith!="Sorted":
+        p=Path(f'{directory}/{i}')
+        print(p)
+        if p.is_dir() and str(i).endswith!="Sorted":
             with open("dir_list.txt","a") as fh:
                 fh.write(f'{os.path.join(directory, i)} \n')
             #print(f'{os.path.join(directory, i)} is directory')
