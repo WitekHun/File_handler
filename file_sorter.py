@@ -31,7 +31,6 @@ def files_list(dir):
                 fh.write(f"Pliki i foldery w Mixed os.listdir(sys.argv[1]): {str(all_list)} \n")
     for i in directory.iterdir(): 
         p=Path(i)
-        #print(f"TO TERAZ SPRAWDZAMY {i} !!!!")
 
         if i.is_dir():
             if i not in dir_list:
@@ -59,8 +58,6 @@ def files_list(dir):
                 with open(f'{logs_path}/lista.txt', 'a') as fh:
                     fh.write(f'{str(i)} \n')
     for i in set(dir_list):
-        #print(f"{i}: {len([i for i in i.iterdir()])}")
-        #print(f"{i}: {[i for i in i.iterdir()]}")
         if i.is_dir() and len([i for i in i.iterdir()])==0:
             os.rmdir(i)
 
@@ -75,8 +72,6 @@ def files_list(dir):
 def images_file(file, directory):
     images_list.append(file)
     shutil.move(file, directory)
-    #print(f'Source: {source}, Destination: {destination}')
-    #print(f'LISTA OBRAZOW: {len(images_list)} !!')
 
 def docs_file(file, directory):
     docs_list.append(file)
@@ -101,7 +96,6 @@ def mk_dir(dir, directory):
         os.mkdir(Path(f"{dir}/{directory}"))
 
 if __name__=="__main__":
-    #files_list("/Users/witekhungendorfer/Desktop/GoIT/Projects/File_handler")
     mk_dir((Path(sys.argv[1])).parent, "Logs")
     sorted_path=os.path.join(((Path(sys.argv[1])).parent), "Sorted")
     mk_dir((Path(sys.argv[1])).parent, "Sorted")
@@ -111,6 +105,3 @@ if __name__=="__main__":
     mk_dir(sorted_path, "Audio")
     mk_dir(sorted_path, "Archives")
     files_list(sys.argv[1])
-    #iter_list=[i for i in Path(os.path.join(sys.argv[1], "EMPTY")).iterdir()]
-    #print(iter_list)
-    #p=Path(r"")
